@@ -23,7 +23,7 @@ param apisubnetname string
 param apisubnetrange string
 
 @description('The name of the subnet created in the new VNET')
-var bastionSubnetName = 'AzureBastionSubnet'
+param bastionSubnetName string
 
 @description('The address range of the subnet created in the new VNET')
 param bastionsubnetrange string
