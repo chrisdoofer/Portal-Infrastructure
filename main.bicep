@@ -40,6 +40,17 @@ param DNSServers array = [
   '10.0.0.2'
 ]
 
+@description('Loop array for Web VMs')
+param webvmNames array = [
+  'webvm1'
+  'webvm2'
+]
+
+@description('Loop array for Web VMs')
+param apivmNames array = [
+  'webvm1'
+  'webvm2'
+]
 
 //Create VNET
 
@@ -72,6 +83,14 @@ module bastion 'modules/bastion.bicep'= {
   dependsOn: [
     VNet
   ]
+}
+
+//Create Compute Resources
+module compute 'modules/compute.bicep'= {
+  name: 'Compute'
+  params: {
+    location: location
+  }
 }
 
 

@@ -7,16 +7,16 @@ param webvmNames array = [
   'webvm2'
 ]
 
-@description('Loop array for Web VMs')
+@description('Loop array for API VMs')
 param apivmNames array = [
-  'webvm1'
-  'webvm2'
+  'apivm1'
+  'apivm2'
 ]
 
 //Resource decleration for web UI VM's
 
-resource webVMs 'Microsoft.Compute/virtualMachines@2020-12-01' = [for name in webvmNames: {
-  name: name
+resource webVMs 'Microsoft.Compute/virtualMachines@2020-12-01' = [for webvmname in webvmNames: {
+  name: webvmname
   location: location
   identity: {
     type:'SystemAssigned'
@@ -25,8 +25,8 @@ resource webVMs 'Microsoft.Compute/virtualMachines@2020-12-01' = [for name in we
 
 //Resource decleration for API VM's
 
-resource apiVMs 'Microsoft.Compute/virtualMachines@2020-12-01' = [for name in apivmNames: {
-  name: name
+resource apiVMs 'Microsoft.Compute/virtualMachines@2020-12-01' = [for apivmname in apivmNames: {
+  name: apivmname
   location: location
   identity: {
     type:'SystemAssigned'
